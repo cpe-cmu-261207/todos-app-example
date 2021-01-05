@@ -29,7 +29,7 @@ function reducer(state, action) {
   }
 }
 
-export const todosContext = createContext({});
+export const TodosContext = createContext({});
 
 function App() {
   const [state, dispatch] = useReducer(reducer, initialState);
@@ -64,7 +64,7 @@ function App() {
   });
 
   return (
-    <todosContext.Provider value={{ state, dispatch }}>
+    <TodosContext.Provider value={{ state, dispatch }}>
       <div className="container mx-auto h-screen">
         <h1 className="text-4xl py-3 text-center">Todos</h1>
 
@@ -81,7 +81,7 @@ function App() {
           <TodoForm />
         </div>
       </div>
-    </todosContext.Provider>
+    </TodosContext.Provider>
   );
 }
 

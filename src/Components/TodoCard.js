@@ -1,8 +1,8 @@
 import { useContext } from "react";
-import { todosContext } from "../App";
+import { TodosContext } from "../App";
 
 const TodoCard = ({ id, name }) => {
-  const { state, dispatch } = useContext(todosContext);
+  const { state, dispatch } = useContext(TodosContext);
 
   const onRemoveTodo = () => {
     //filter new todo without this id

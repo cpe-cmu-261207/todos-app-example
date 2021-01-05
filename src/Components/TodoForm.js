@@ -1,8 +1,8 @@
 import { useContext, useState } from "react";
-import { todosContext } from "../App";
+import { TodosContext } from "../App";
 const TodoForm = () => {
   const [todo, setTodo] = useState("");
-  const { dispatch } = useContext(todosContext);
+  const { dispatch } = useContext(TodosContext);
 
   const addTodo = (e) => {
     e.preventDefault();
