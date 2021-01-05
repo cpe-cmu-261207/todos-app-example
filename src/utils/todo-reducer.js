@@ -14,6 +14,12 @@ export function reducer(state, action) {
         ...state,
         myTodos: action.payload,
       };
+
+    case "DELETE":
+      return {
+        ...state,
+        myTodos: state.myTodos.filter((todo) => todo.id !== action.payload),
+      };
     default:
       throw new Error();
   }
