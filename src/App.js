@@ -11,11 +11,11 @@ function App() {
 
   //fetch todos from localstroage
   function fetchTodos() {
-    const todos = localStorage.getItem("myTodos");
-    if (todos) {
+    const localTodos = localStorage.getItem("myTodos");
+    if (localTodos) {
       dispatch({
         type: "SET_TODO",
-        payload: JSON.parse(todos),
+        payload: JSON.parse(localTodos),
       });
     }
   }
