@@ -1,6 +1,5 @@
 export const initialState = {
   myTodos: [],
-  saveTodos: false,
 };
 
 export function reducer(state, action) {
