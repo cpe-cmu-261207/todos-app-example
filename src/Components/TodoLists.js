@@ -6,7 +6,7 @@ const TodoLists = ({ todos }) => (
     style={{ maxHeight: "500px" }}
   >
     {todos.map((todo) => (
-      <TodoCard id={todo.id} name={todo.name} />
+      <TodoCard key={todo.id} id={todo.id} name={todo.name} />
     ))}
   </div>
 );
