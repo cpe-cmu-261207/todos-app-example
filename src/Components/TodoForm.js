@@ -15,7 +15,6 @@ const TodoForm = () => {
           name: todo,
         },
       });
-
       //clear input
       setTodo("");
     } else {

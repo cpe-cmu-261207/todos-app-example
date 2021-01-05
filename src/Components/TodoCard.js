@@ -7,7 +7,7 @@ const TodoCard = ({ id, name }) => {
   const onRemoveTodo = () => {
     //dispatch delete action
     dispatch({
-      type: "DELETE",
+      type: "DELETE_TODO",
       payload: id,
     });
   };

@@ -14,8 +14,7 @@ export function reducer(state, action) {
         ...state,
         myTodos: action.payload,
       };
-
-    case "DELETE":
+    case "DELETE_TODO":
       return {
         ...state,
         myTodos: state.myTodos.filter((todo) => todo.id !== action.payload),
