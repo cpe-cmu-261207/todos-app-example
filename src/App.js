@@ -21,9 +21,7 @@ function App() {
   }
 
   //use function fetchTodos() when page refresh and rendered
-  useEffect(() => {
-    fetchTodos();
-  }, []);
+  useEffect(fetchTodos, []);
 
   useEffect(() => {
     localStorage.setItem("myTodos", JSON.stringify(state.myTodos));
