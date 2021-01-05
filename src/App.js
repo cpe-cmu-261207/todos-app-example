@@ -1,33 +1,8 @@
-import TodoCard from "./Components/TodoCard";
 import TodoForm from "./Components/TodoForm";
 import { createContext, useEffect, useReducer } from "react";
+import TodoLists from "./Components/TodoLists";
 
-const initialState = {
-  myTodos: [],
-  saveTodos: false,
-};
-
-function reducer(state, action) {
-  switch (action.type) {
-    case "ADD_TODO":
-      return {
-        ...state,
-        myTodos: [...state.myTodos, action.payload],
-      };
-    case "SET_TODO":
-      return {
-        ...state,
-        myTodos: action.payload,
-      };
-    case "TRIGGER_SAVE":
-      return {
-        ...state,
-        saveTodos: action.payload,
-      };
-    default:
-      throw new Error();
-  }
-}
+import { initialState, reducer } from "./utils/todo-reducer";
 
 export const TodosContext = createContext({});
 
@@ -45,41 +20,23 @@ function App() {
     }
   }
 
-  //use function fetchTodos() one time once page has loaded
+  //use function fetchTodos() when page refresh and rendered
   useEffect(() => {
     fetchTodos();
   }, []);
 
   useEffect(() => {
-    //if dispatch trigger it will save state todos to localstorage
-    if (state.saveTodos === true) {
-      localStorage.setItem("myTodos", JSON.stringify(state.myTodos));
-
-      //trigger to false
-      dispatch({
-        type: "TRIGGER_SAVE",
-        payload: false,
-      });
-    }
-  });
+    localStorage.setItem("myTodos", JSON.stringify(state.myTodos));
+  }, [state.myTodos]); //run when state.myTodos change
 
   return (
     <TodosContext.Provider value={{ state, dispatch }}>
       <div className="container mx-auto h-screen">
         <h1 className="text-4xl py-3 text-center">Todos</h1>
 
-        <div
-          className="flex flex-col items-center overflow-auto"
-          style={{ maxHeight: "500px" }}
-        >
-          {state.myTodos.map((todo) => (
-            <TodoCard id={todo.id} name={todo.name} />
-          ))}
-        </div>
+        <TodoLists todos={state.myTodos} />
 
-        <div className="flex justify-center my-3">
-          <TodoForm />
-        </div>
+        <TodoForm />
       </div>
     </TodosContext.Provider>
   );

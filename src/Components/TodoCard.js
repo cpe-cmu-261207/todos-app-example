@@ -13,20 +13,14 @@ const TodoCard = ({ id, name }) => {
       type: "SET_TODO",
       payload: newTodo,
     });
-
-    //trigger to save todo to localstroage
-    dispatch({
-      type: "TRIGGER_SAVE",
-      payload: true,
-    });
   };
   return (
-    <div className="shadow-md rounded-md px-3 py-5 w-2/5 grid grid-cols-2 bg-white my-3">
-      <div>
-        <p>id : {id}</p>
-        <p>todo : {name}</p>
+    <div className="shadow-md rounded-full px-6 py-2 w-2/5 grid grid-cols-2 bg-white my-3">
+      <div className="flex items-center col-auto">
+        <p>{name}</p>
       </div>
-      <div className="col-start-3">
+
+      <div className="flex items-center justify-end col-auto">
         <button
           onClick={onRemoveTodo}
           className="text-2xl text-red-500 focus:outline-none"
